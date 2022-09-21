@@ -1,0 +1,1 @@
+Polis[,PC4:=as.character(substr(HoofdPostcode,1,4))]

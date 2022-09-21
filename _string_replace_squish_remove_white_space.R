@@ -1,0 +1,1 @@
+PBT11[,ObjTypOms:=  str_replace_all( str_squish( paste0(C1,C2,C3,C4,C5,C6)), "NA", "")]

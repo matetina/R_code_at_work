@@ -1,0 +1,1 @@
+PostcodeTabel2<- PostcodeTabel[,c("subid", "index") := NULL]

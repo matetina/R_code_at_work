@@ -1,0 +1,1 @@
+data <- data %>% replace(is.na(.), -9999)
