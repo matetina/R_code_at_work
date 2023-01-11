@@ -1,0 +1,23 @@
+te_split<-c("type 1",
+            "type 2",
+            "type 3" )
+
+data[, n_splits := 1]
+
+
+# split only rows with types 1-3
+# oudere jaren split in 4 kwartalen, en huidige jaar in het aantal kwartalen tot nu toe
+huidig_kwartalen = "Q1 Q2 Q3"
+
+data[type_description %in% te_split & Outputjaar < huidig_jaar , 
+          `:=` (split = "Q1 Q2 Q3 Q4", n_splits = 4) ]
+data[type_description %in% te_split & Outputjaar == huidig_jaar ,
+           `:=` (split = huidig_kwartalen, n_splits = 3) ]
+data[,amount := amount_voor_split/n_splits]
+
+
+## nieuwe regels per kwartaal split
+data_gesplit<-data[, .(kwartaal_split = unlist(tstrsplit(split, " ", type.convert = TRUE))),
+                 by = c("kwartaal", "Branch", "typ_description", "amount_voor_split","amount", "Outputjaar", 'split' )]
+
+data_gesplit[,kwartaal_split := paste0(Outputjaar,kwartaal_split)]
