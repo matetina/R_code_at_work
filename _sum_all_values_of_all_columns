@@ -1,0 +1,1 @@
+sum(colSums(inflatie_raw[,2:ncol(inflatie_raw)]))
