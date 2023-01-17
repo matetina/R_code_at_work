@@ -1,0 +1,5 @@
+set.seed(1234)
+pv = replicate(10^4, t.test(rnorm(15, 100, 30),
+       rnorm(30,100,20), var.eq=T)$p.val)
+mean(pv <= .05)
+[1] 0.0824
