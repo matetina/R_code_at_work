@@ -1,0 +1,4 @@
+#kolomnamen opschonen: lowercase, beginnend met hoofdletter, zonder punten ertussen
+colnames(Schade) <- sapply(colnames(Schade), tolower)
+colnames(Schade) <- sub('^(\\w?)', '\\U\\1', colnames(Schade), perl=T)
+colnames(Schade) <- gsub('\\.(\\w?)', '\\U\\1', colnames(Schade), perl=T)
