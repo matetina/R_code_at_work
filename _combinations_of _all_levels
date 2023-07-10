@@ -1,0 +1,2 @@
+data_avp <- data.table(expand.grid(n1_leeftijd, n2_verzbedr, n3_gez, n4_ertype,
+                        n5_er_alg, n6_er_kind, n7_pc))
