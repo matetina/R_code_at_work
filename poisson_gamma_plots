@@ -1,0 +1,18 @@
+### Generate Gamma and Poisson plots
+
+library(data.table)
+setwd("G:/Productontwikkeling/01 Projecten/_Archief/AVP/Data_202103_resultatenalayse")
+load("Data_clean.RData")
+
+
+Polis[1]
+N_claims<- Polis[,.(N_schades)]
+Amount<-Schade[,.(RecordID,Geleden)]
+
+N_claims[N_schades>0,plot(table(N_schades), xlab = "Number of claims")]
+
+Amount[Geleden>1 & Geleden<10000,plot(table(Geleden), xlab = "Amount")]
+
+
+fwrite(N_claims, "N_claims.csv")
+fwrite(Amount, "Amount.csv")
